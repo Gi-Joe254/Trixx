@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+body{
+    font: normal 1em serif;
+    background: url(https://img.freepik.com/premium-photo/electrical-repair-tools-house-selective-focus-plan_73944-16418.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+.navContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    margin:10px 0 10px 90px;
+    font: bolder 1.5em sans-serif;
+    position:absolute;
+    top:100%;
+    animation: animatelogo 2s;
+}
+@keyframes animatelogo {
+    from{
+        top: 100px;
+        opacity: 0;
+    }
+    to{
+        top: 100%;
+        opacity: 0.5;
+    }
+}
+.menu{
+    position: absolute;
+    top: 100%;
+    left:80%;
+    height: 50px;
+    transition: .5s;
+}
+.nav{
+    position: absolute;
+    top:300%;
+    left:80%;
+    display: none;
+    position: absolute;
+}
+.content{
+    display: none;
+    position:absolute;
+    top: 20%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+    animation: animatecontent 0.5s;
+
+}
+button{
+    background: transparent;
+    position:absolute;
+    top: 30%;
+    left:50%;
+    transform: translate(-50%, -50%);    
+}
+
+@keyframes animatecontent {
+    from{
+        top: -100px;
+    }
+    to{
+        top:20%;
+    }
+}
+.section1{
+    display: block;
+    height: 200px;
+}
+.section2{
+    display: block;
+    background-color: azure;
+    width: 60%;
+    margin: 20px auto;
+    border: 2px solid gray;
+    border-radius: 20px;
+    padding: 10px;
+}
+.question{
+    font-size: 20px;
+    border-bottom: 1px double yellowgreen;
+    position: relative;
+}
+.question::after{
+    content: '+';
+    position: absolute ;
+    right: 2px;
+}
+.answer{
+    font-size: 20px;
+    height: 0px;
+    overflow: hidden;
+    transition: 1s;
+    
+}
+.active .answer{
+    height:200px;
+    transition: 1s;
+    
+}

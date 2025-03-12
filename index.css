@@ -2,31 +2,46 @@
     box-sizing: border-box;
     margin:0;
     padding: 0;
+    font-family: sans-serif
 }
-
+body{
+    background-color:;
+    overflow-x: hidden;
+    
+}
+.no-scroll{
+    overflow: hidden;
+}
 .navbar{
-    position: relative;
+    position: fixed;
     background: #E0E0E0   ;
     height: 60px;
     width: 100%;
     color: #FFD700;
     display: flex;
-    
+    z-index: 100;
 } 
 .nav{
     display:none;
-    background: rgba(18, 117, 5, 0.8);
-    width: 90vh;
+    background: rgba(10,20,30, 0.95);
+    width: 100%;
     color: #faf5f5;
-    padding: 10px;
-    height: 230px;
+    padding: 30px;
+    height: 100vh;
     position: absolute;
     top: 100%;
+    z-index: 10;
 }
 .nav li{
     list-style: none;
-    font: italic 1em sans-serif;
+    font: normal 1em sans-serif;
     line-height: 3em;
+    border-bottom: 1px solid;
+    cursor: pointer;
+}
+.nav li:hover{
+    background: #353333;
+    color: #b6afaf;
     
 }
 
@@ -35,6 +50,7 @@
     position: absolute;
     top: -80%;
     margin: 0 50px;
+    cursor: pointer;
     
     animation: animatelogo 2s;
 }
@@ -45,9 +61,16 @@
     }
 }
 
-.icons img{
+.menuBar img{
     height: 20px;
     margin:20px 20px;
+    cursor: pointer;
+
+    
+}
+.menuBar:hover{
+    background: #d9d5e4;
+    transition: 1s;
 }
 .contactBtn{
     position: relative;
@@ -55,16 +78,31 @@
     top:20%;
     height: 30px;
     width: 90px;
-    background-color:#007BFF;
+    background:#4080d4;
     color: #E0E0E0;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
+}
+.contactBtn:hover{
+    background-color:#78abe2;
+    transition: 1s;
 }
 .intro{
     height: 60vh;
     background: url("https://mediaassets.cbre.com/-/media/project/cbre/dotcom/americas/canada-emerald/about-us/newsroom/circuit-board-2736x1824.jpg")center center / cover no-repeat;
     color:#e0d0d0;
     margin-top:-10%;
+    
+    animation: backgroundOut linear forwards;
+    animation-timeline: view();
+    animation-range:exit ;
+}
+@keyframes backgroundOut{
+    to{scale: 1.5;
+    opacity: 0;
+    
+    }
     
 }
 .intro h2{    
@@ -75,14 +113,21 @@
     font: bold 1.5em sans-serif;
     text-align: center;
     background: rgba(16, 87, 87, 0.2);
+
+    animation: textOut linear;
+    animation-timeline: view();
+    animation-range:exit -200px;
     
+}
+@keyframes textOut{
+    50%{opacity:0.4}
+    70%,100%{opacity: 0;}
 }
 .intro .yellowText{
     font:bold 1.4em sans-serif;
-    color: #007BFF;
+    color: rgba(65, 190, 248, 0.911);
 }
-.services{
-    
+.services{    
     text-align: center;
 }
 .services h2{
@@ -95,19 +140,152 @@
 }
 .serviceList li{
     list-style: none;
-    border: none;
+    padding: 20px 30px;
     border-radius: 5px;
-    width: 350px;
+    width: 85%;
+    height: 250px;
     margin: 20px auto;
-    background: rgb(219, 215, 215);
+    background:#f1efef ;
+    font: normal 0.8em sans-serif;
+    text-align: right;
+    line-height: 1.5em;
+    position: relative;
+    box-shadow: 1px 1px 20px 1px #586164 ;
+}
+.s1, .s2, .s3, .s4{
+
+    animation: zoom linear forwards;
+    animation-timeline: view();
+    animation-range:entry ;
+  }
+@keyframes zoom{
+    from{
+        scale: 0.5 0.5;
+        opacity: 0;
+        background: #586164;
+    }
+    to{scale: 1 1;}
+}
+.serviceList li:hover{
+    background:#586164 ;
+    color: #E0E0E0;
+    transition: 0.5s;
+    
+    h3{text-decoration: underline;}
+    img{transform: scale(1.5);
+    transition: 1s;}
     
 }
 .serviceList h3{
-    font:bold 1em sans-serif;
+    font:bold 1.4em sans-serif;
     padding: 20px;
     color: rgb(20, 160, 196);
+    text-decoration: ;
+    text-align: center;
 }
 .serviceList img{
     height:auto;
     width:100px;
+    float: left;
+    padding-left: 0px;
+
+    
+}
+.About{
+    display: flex;
+    background:#4080d4;
+    height: 120px;
+    color:rgba(255, 255, 255, 0.788);
+    font: normal 0.7em sans-serif;
+    padding: 20px;
+    margin: 100px 0;
+    z-index: 100;
+    
+    
+}
+.About h3{
+    color: rgba(255, 255, 255, 0.788);
+    font-size: 4em;
+    margin: auto;
+    letter-spacing: -0.1em;
+    line-height: 0.8em;
+    text-align: left;
+
+    animation: fade;
+    animation-timeline: view();
+
+}
+.AboutContent{
+    width: 300px;
+    padding-top: 6px;
+    animation: fade;
+    animation-timeline: view();
+    
+
+}
+@keyframes fade{
+    from{opacity:0}
+}
+
+.products{
+    background:linear-gradient(#788386,rgb(153, 199, 241));
+    color: ;
+    margin-top: 120px;
+    padding-top: 150px;
+    z-index: -10000;
+    height: 600px;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: scroll;
+    
+    
+}
+.products h2{
+    color: white;
+    font: bolder 8em sans-serif;
+    word-wrap: break-word;
+    background: linear-gradient(rgb(153, 199, 241),rgba(100, 200,30, 0.3));
+    padding: 50px 30px;
+    width:300px;
+    height: 300px;
+    margin: 0 60px;
+    line-height: 0.5em;
+    border-radius: 10px;
+    
+}
+.productList{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.productList li{
+    border: 0px solid transparent;
+    width:300px;
+    height: 300px;
+    margin-right: 60px;
+    background:linear-gradient(rgb(153, 199, 241),rgba(100, 200,30, 0.3));
+    border-radius: 10px;
+    color: white;
+    font: bolder 2em sans-serif;   
+    padding: 20px; 
+    
+    animation: shrink-products linear;
+    animation-timeline: scroll(overflow-x);
+    animation-range:cover '400px';
+}
+
+@keyframes shrink-products{
+    from{scale: 0;}
+}
+.productList li:hover{
+    box-shadow: 1px 1px 50px 1px white;
+    scale: 1.1 1.1;
+    transition: 0.5s;
+}
+footer{
+    
+}
+.logo2{
+    width: 100px;
 }
